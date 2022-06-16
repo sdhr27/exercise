@@ -29,3 +29,11 @@ export function compose2(...fns) {
     );
   };
 }
+export function compose3(...fns) {
+  return function fn(...arg) {
+    // 第一次迭代acc取数组第一个不为空的值为function，消化初始arg，后续cur消化acc为值
+    return fns.reduce(async (acc, cur) =>
+      typeof acc === 'function' ? cur(await acc(...arg)) : cur(await acc),
+    );
+  };
+}

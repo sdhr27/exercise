@@ -36,3 +36,6 @@ url 解析
 
 ~~compose~~
 ~~curry~~
+instanceof
+typeof
+call apply bind
