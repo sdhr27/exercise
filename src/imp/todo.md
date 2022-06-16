@@ -4,8 +4,9 @@
 ~~map~~
 ~~filter~~
 ~~reduce~~
-flat
+~~flat~~
 ~~queue~~
+concat
 
 # promise
 
@@ -28,8 +29,8 @@ url 解析
 
 原型链
 借用构造函数
-组合继承
-class 继承
+~~组合继承~~
+~~class 继承~~
 
 # others
 

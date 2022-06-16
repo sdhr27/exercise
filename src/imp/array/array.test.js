@@ -4,7 +4,7 @@ import forEach2 from './for_each';
 import map2 from './map';
 import filter2 from './filter';
 import reduce2 from './reduce';
-import Queue from './queue';
+import { flat1, flat2 } from './flat';
 import { addPrototype, deletePrototype } from '../../utils/protoype_manage';
 
 const fns = [forEach2, map2, filter2, reduce2];
@@ -46,18 +46,11 @@ describe('test array', () => {
     const arr1 = arr.reduce2((prev, cur) => prev + cur, 3);
     expect(arr1).toEqual(9);
   });
-  it(`queue`, () => {
-    const queue = new Queue(3);
-    queue.push(1);
-
-    expect(queue.join('')).toEqual('1');
-    queue.push(2, 3);
-    expect(queue.join('')).toEqual('123');
-    queue.push(4);
-    expect(queue.join('')).toEqual('234');
-    queue.push(5, 6);
-    expect(queue.join('')).toEqual('456');
-    queue.pop();
-    expect(queue.join(',')).toEqual('5,6');
+  it(`flat`, () => {
+    const arr = [1, [2], [3, [1, 2, [3]]]];
+    const arr1 = flat1(arr);
+    expect(arr1.join('')).toEqual('123123');
+    const arr2 = flat2(arr);
+    expect(arr2.join('')).toEqual('123123');
   });
 });
