@@ -42,5 +42,7 @@ module.exports = {
     'implicit-arrow-linebreak': 'off',
     'no-confusing-arrow': 'off',
     'function-paren-newline': 'off',
+    'no-underscore-dangle': 'off',
+    'no-param-reassign': 'off',
   },
 };
