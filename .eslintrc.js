@@ -44,5 +44,9 @@ module.exports = {
     'function-paren-newline': 'off',
     'no-underscore-dangle': 'off',
     'no-param-reassign': 'off',
+    'no-trailing-spaces': 'off',
+    'keyword-spacing': 'off',
+    'padded-blocks': 'off',
+    'no-empty': 'off',
   },
 };
