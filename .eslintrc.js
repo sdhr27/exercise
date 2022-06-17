@@ -1,12 +1,11 @@
 module.exports = {
   env: {
     browser: true,
-    commonjs: true,
     es2021: true,
     jest: true,
   },
   extends: [
-    'airbnb-base',
+    'eslint:recommended',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
   ],
@@ -18,7 +17,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint', 'jest'],
+  plugins: ['react', '@typescript-eslint', 'jest', 'import'],
   settings: {
     react: {
       version: 'detect',
@@ -28,25 +27,9 @@ module.exports = {
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.ts'],
       },
     },
-    'import/extensions': ['.js', '.jsx', '.tsx', '.ts'],
+    // 'import/extensions': ['.js', '.jsx', '.tsx', '.ts'],
   },
   rules: {
-    'no-use-before-define': 'off',
-    'consistent-return': 'off',
-    'new-cap': 'off',
-    'no-plusplus': 'off',
-    'no-bitwise': 'off',
-    quotes: 'off',
-    'import/extensions': 'off',
-    'one-var': 'off',
-    'implicit-arrow-linebreak': 'off',
-    'no-confusing-arrow': 'off',
-    'function-paren-newline': 'off',
-    'no-underscore-dangle': 'off',
-    'no-param-reassign': 'off',
-    'no-trailing-spaces': 'off',
-    'keyword-spacing': 'off',
-    'padded-blocks': 'off',
-    'no-empty': 'off',
+    'import/no-unresolved': [2, { commonjs: true, amd: true }],
   },
 };
