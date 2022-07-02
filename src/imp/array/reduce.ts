@@ -15,10 +15,11 @@ export default function reduce2(callback, initialValue) {
   const len = O.length >>> 0;
   let k = 0,
     acc; // 初始化索引元素、累加器
-  // 取初值
+  // 取初值赋予acc
   if (arguments.length > 1) {
     acc = initialValue;
   } else {
+    // 获取数组中第一个有值的index，比O[K] !== undefined个更简洁
     while (k < len && !(k in O)) {
       k++;
     }

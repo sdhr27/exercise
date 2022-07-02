@@ -29,6 +29,11 @@ export function compose2(...fns) {
     );
   };
 }
+/**
+ *
+ * @param fns
+ * @description 兼容异步函数的compose
+ */
 export function compose3(...fns) {
   return function fn(...arg) {
     // 第一次迭代acc取数组第一个不为空的值为function，消化初始arg，后续cur消化acc为值

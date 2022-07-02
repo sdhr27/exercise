@@ -7,7 +7,7 @@
 export default function throttle(callback, tiemout) {
   let previous = 0;
   return function newFn(...args) {
-    const now = +new Date(); // 强制类型转换
+    const now = +new Date(); // +运算符强制类型转换为数字
     if (now - previous > tiemout) {
       // 大于时限执行
       callback.call(this, ...args);

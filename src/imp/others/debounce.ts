@@ -14,18 +14,24 @@ export default function debounce(callback, timeout) {
   };
 }
 
-// https://juejin.cn/post/6946022649768181774
-// export default function debounce(func, wait) {
-//   let timeout;
-//   return function () {
-//     const context = this;
-//     const args = arguments;
-//     clearTimeout(timeout);
-//     timeout = setTimeout(() => {
-//       func.apply(context, args);
-//     }, wait);
-//   };
-// }
+/**
+ *
+ * @param func 回调函数
+ * @param timeout 时延
+ * @description  https://juejin.cn/post/6946022649768181774 中的原版实现
+ */
+export function origin_debounce(func, timeout: number) {
+  let timer;
+  return function () {
+    const context = this; // !Unexpected aliasing of 'this' to local variable
+    const args = arguments; // !Use the rest parameters instead of 'arguments'
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      // apply第二个参数是数组，即外层arguments，注意箭头函数没有arguments
+      func.apply(context, args);
+    }, timeout);
+  };
+}
 
 // github.com/xyuanbuilds/terms/blob/main/src/implement/basic/debounce.ts
 // export default function debounce<T extends (...args: any[]) => any>(

@@ -1,3 +1,9 @@
+/**
+ *
+ * @param str
+ * @param obj
+ * @description 递归地处理字符串，不能加全局标识g，每次只处理一个
+ */
 export function template1(str: string, obj: Record<string, unknown>) {
   const reg = /\{\{(\w+)\}\}/; // !不加g全局标识，只匹配第一个
   if (reg.test(str)) {

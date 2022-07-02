@@ -6,7 +6,7 @@ import capital from './capital';
 
 describe('reg', () => {
   it(`url parser`, () => {
-    const url = `https://www.zhihu.com/search?type=content&q=javascript`;
+    const url = `https://www.zhihu.com/search?type=content&q=javascript&bool&q=typescript`;
     const obj = urlParser(url);
     let str = '';
     // eslint-disable-next-line no-restricted-syntax
@@ -14,7 +14,7 @@ describe('reg', () => {
       str += `${key}:${value};`;
     }
 
-    expect(str).toEqual('type:content;q:javascript;');
+    expect(str).toEqual('type:content;q:javascript,typescript;bool:true;');
   });
   it('template{{}}', () => {
     const str = '我是{{name}} 年龄{{age}}';
@@ -52,11 +52,11 @@ describe('reg', () => {
     // 2. foo-bar---- => fooBar
     // 3. foo_bar__ => fooBar
     let str = 'foo bar__';
-    expect(camel(str)).toEqual('fooBar');
+    expect(camel(str)).toEqual('fooBar'); // 【 b】【b】;【__】【undefined】
     str = 'foo-bar';
-    expect(camel(str)).toEqual('fooBar');
+    expect(camel(str)).toEqual('fooBar'); // 【-b】【b】
     str = 'foo_bar--';
-    expect(camel(str)).toEqual('fooBar');
+    expect(camel(str)).toEqual('fooBar'); // 【_b】【b】;【--】【undefined】
   });
   it('capital', () => {
     let str = 'hello world.my friend';
