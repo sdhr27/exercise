@@ -1,7 +1,16 @@
 import Queue from './class_queue';
 import Queue2 from './combine_queue';
+import create2 from './object_create';
+import { addPrototype, deletePrototype } from '../../utils/protoype_manage';
 
 describe('promise', () => {
+  const fns = [create2];
+  afterEach(() => {
+    deletePrototype(Object, fns);
+  });
+  beforeEach(() => {
+    addPrototype(Object, fns);
+  });
   it(`class继承实现队列`, () => {
     const queue = new Queue(3);
     queue.in(1);
@@ -27,5 +36,9 @@ describe('promise', () => {
     expect(queue.join('')).toEqual('456');
     queue.out();
     expect(queue.join(',')).toEqual('5,6');
+  });
+  it(`Object.create`, () => {
+    const obj = Object.create2({ name: 'djl' });
+    expect(obj.name).toEqual('djl');
   });
 });
