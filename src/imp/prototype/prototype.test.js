@@ -1,16 +1,9 @@
 import Queue from './class_queue';
 import Queue2 from './combine_queue';
-import create2 from './object_create';
-import { addPrototype, deletePrototype } from '../../utils/protoype_manage';
+import new2 from './new';
+import instanceof2 from './instanceof';
 
 describe('promise', () => {
-  const fns = [create2];
-  afterEach(() => {
-    deletePrototype(Object, fns);
-  });
-  beforeEach(() => {
-    addPrototype(Object, fns);
-  });
   it(`class继承实现队列`, () => {
     const queue = new Queue(3);
     queue.in(1);
@@ -37,8 +30,25 @@ describe('promise', () => {
     queue.out();
     expect(queue.join(',')).toEqual('5,6');
   });
-  it(`Object.create`, () => {
-    const obj = Object.create2({ name: 'djl' });
-    expect(obj.name).toEqual('djl');
+  it(`new`, () => {
+    function person(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+    let p = new2(person, '布兰', 12);
+    expect(p.name).toEqual('布兰');
+    expect(p.age).toEqual(12);
+  });
+  it(`instanceof`, () => {
+    function person(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+    let p = new2(person, '布兰', 12);
+    expect(instanceof2([], Array)).toEqual(true);
+    expect(instanceof2(p, person)).toEqual(true);
+    expect(instanceof2(p, Array)).toEqual(false);
+    expect(instanceof2(p, Object)).toEqual(true);
+    expect(instanceof2(person, Function)).toEqual(true);
   });
 });

@@ -4,10 +4,11 @@ import forEach2 from './for_each';
 import map2 from './map';
 import filter2 from './filter';
 import reduce2 from './reduce';
+import splice2 from './splice';
 import { flat1, flat2 } from './flat';
 import { addPrototype, deletePrototype } from '../../utils/protoype_manage';
 
-const fns = [forEach2, map2, filter2, reduce2];
+const fns = [forEach2, map2, filter2, reduce2, splice2];
 
 describe('test array', () => {
   // afterEach(cleanup);
@@ -52,5 +53,16 @@ describe('test array', () => {
     expect(arr1.join('')).toEqual('123123');
     const arr2 = flat2(arr);
     expect(arr2.join('')).toEqual('123123');
+  });
+  it(`splice`, () => {
+    const arr = [1, 2, 3];
+    const arr1 = arr.splice2(1, 1, 5);
+    expect(arr.join('')).toEqual('153');
+    expect(arr1.join('')).toEqual('2');
+  });
+  it(`splice omit deleteCount`, () => {
+    const arr = [1, 2, 3];
+    arr.splice2(1);
+    expect(arr.join('')).toEqual('1'); // 第二个参数省略，数组只保留start元素前的元素
   });
 });
