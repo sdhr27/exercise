@@ -32,5 +32,7 @@ module.exports = {
   rules: {
     'import/no-unresolved': [2, { commonjs: true, amd: true }],
     'no-constant-condition': 'off',
+    '@typescript-eslint/no-this-alias': 0,
+    'no-prototype-builtins': 0,
   },
 };

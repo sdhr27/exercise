@@ -17,9 +17,13 @@ export default function map2(callback, thisArg) {
   const res: any = [];
   while (k < len) {
     if (k in O) {
-      res[k] = callback.call(thisArg, O[k], k, O);
+      res[k] = callback.call(thisArg, O[k], k, O); // 考虑空值
     }
     k++;
   }
   return res;
 }
+
+// export default function mapByReduce(callback) {
+
+// }

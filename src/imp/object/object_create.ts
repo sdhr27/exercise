@@ -12,9 +12,10 @@ export default function create2(
   if (typeof obj !== 'object' && typeof obj !== 'function') {
     throw new Error('obj只能从对象或null创建');
   }
-  function Fn() {}
-  Fn.prototype = obj;
-  const newObj = new Fn();
+  // 核心代码就下面3行
+  function Fn() {} // 新对象的构造函数
+  Fn.prototype = obj; // 使用现有的对象来作为新创建对象的原型
+  const newObj = new Fn(); // 创建这个新对象
   if (typeof objProperties !== 'undefined') {
     Object.defineProperties(newObj, objProperties);
   }

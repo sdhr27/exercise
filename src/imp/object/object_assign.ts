@@ -3,6 +3,7 @@ export default function assign2(target, ...source) {
     throw new Error('cannot convert undefined or null to object');
   }
   const ret = Object(target);
+  // assign可以拥有复数个要复制的对象
   source.forEach((obj) => {
     if (obj !== null) {
       for (const key in obj) {

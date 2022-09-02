@@ -16,7 +16,7 @@ var permute = function (nums) {
   function backtrack(path, list) {
     // 跳出条件
     if (path.length === nums.length) {
-      result.push([...path]);
+      result.push([...path]); // !注意[...path]
       return;
     }
     for (let i = 0; i < list.length; i++) {

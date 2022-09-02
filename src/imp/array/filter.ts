@@ -24,3 +24,6 @@ export default function filter2(callback, thisArg) {
   }
   return res;
 }
+
+// aa.filter((item) => {...})
+// Array.prototype.filter = filter;
