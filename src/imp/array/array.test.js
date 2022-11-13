@@ -5,10 +5,12 @@ import map2 from './map';
 import filter2 from './filter';
 import reduce2 from './reduce';
 import splice2 from './splice';
+import { reverse2 } from './reverse';
+import { slice2 } from './slice';
 import { flat1, flat2 } from './flat';
 import { addPrototype, deletePrototype } from '../../utils/protoype_manage';
 
-const fns = [forEach2, map2, filter2, reduce2, splice2];
+const fns = [forEach2, map2, filter2, reduce2, splice2, slice2, reverse2];
 
 describe('test array', () => {
   // afterEach(cleanup);
@@ -53,6 +55,19 @@ describe('test array', () => {
     expect(arr1.join('')).toEqual('123123');
     const arr2 = flat2(arr);
     expect(arr2.join('')).toEqual('123123');
+  });
+  it(`slice`, () => {
+    const arr = [1, 2, 3];
+    let arr1 = arr.slice2(1);
+    expect(arr.join('')).toEqual('123');
+    expect(arr1.join('')).toEqual('23');
+    arr1 = arr.slice2(1, 1);
+    expect(arr1.join('')).toEqual('');
+  });
+  it(`reverse`, () => {
+    const arr = [1, 2, 3];
+    arr.reverse();
+    expect(arr.join('')).toEqual('321');
   });
   it(`splice`, () => {
     const arr = [1, 2, 3];

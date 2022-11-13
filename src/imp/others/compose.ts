@@ -19,9 +19,9 @@ export function compose1(...fns) {
 /**
  *
  * @param fns
- * @description use reduce，顺序和compose1相反
+ * @description use reduce，顺序和compose相反：从左向右执行
  */
-export function compose2(...fns) {
+export function pipe(...fns) {
   return function fn(...arg) {
     // 第一次迭代acc取数组第一个不为空的值为function，消化初始arg，后续cur消化acc为值
     return fns.reduce((acc, cur) =>

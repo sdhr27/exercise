@@ -1,4 +1,4 @@
-import { compose1, compose2, compose3 } from './compose';
+import { compose1, pipe, compose3 } from './compose';
 
 describe('compose', () => {
   it('recursion compose', () => {
@@ -15,7 +15,7 @@ describe('compose', () => {
     const res = composeFn(0);
     expect(res).toEqual(31);
   });
-  it(`reduce compose`, () => {
+  it(`pipe`, () => {
     function fn1(num1) {
       return num1 + 1;
     }
@@ -25,7 +25,7 @@ describe('compose', () => {
     function fn3(num1) {
       return num1 + 3;
     }
-    const composeFn = compose2(fn1, fn2, fn3);
+    const composeFn = pipe(fn1, fn2, fn3);
     const res = composeFn(0);
     expect(res).toEqual(13);
   });

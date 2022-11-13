@@ -13,7 +13,7 @@
 var findTargetSumWays = function (nums, target) {
   // 因为：pos - neg = (sum - neg) - neg = target
   // 所以：neg = (sum - target) / 2
-  // 在数组 nums 中选取若干元素，使得这些元素之和等于neg
+  // 问题转变为：在数组 nums 中选取若干元素，使得这些元素之和等于neg
   // 元素只能选1次，转换为0-1背包问题
   const sum = nums.reduce((acc, cur) => acc + cur, 0);
   if (sum - target < 0) return 0;

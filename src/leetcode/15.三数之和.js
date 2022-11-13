@@ -10,7 +10,7 @@
  * @return {number[][]}
  */
 var threeSum = function (nums) {
-  nums.sort((a, b) => a - b);
+  nums.sort((a, b) => a - b); // 排序是核心！
   const ans = [];
   for (let i = 0; i < nums.length; i++) {
     // 找到不重复的第一个数字启动
@@ -19,7 +19,7 @@ var threeSum = function (nums) {
       right = nums.length - 1;
 
     while (left < right) {
-      const path = [nums[left], nums[i], nums[right]];
+      const path = [nums[i], nums[left], nums[right]];
       const sum = path.reduce((acc, cur) => acc + cur, 0);
       if (sum === 0) {
         ans.push(path);

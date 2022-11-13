@@ -1,16 +1,14 @@
 export default function debounce(callback, timeout) {
   let timer;
-  function tim(...p) {
-    // 箭头函数this自动绑定定义的上下文
-    // apply绑定箭头函数的this即tim的this
-    return () => callback.apply(this, p);
-  }
-  return function newFn(...args) {
+  return function fn(...args) {
     // 每次触发函数则清除上一个定时器，则上一次任务被取消
     clearTimeout(timer);
+    const context = this;
     // 注册新定时器，timeout后执行
     // call绑定当前函数作用域this，传入当前函数参数args
-    timer = setTimeout(tim.call(this, ...args), timeout);
+    timer = setTimeout(() => {
+      callback.apply(context, args);
+    }, timeout);
   };
 }
 
